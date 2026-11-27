@@ -348,4 +348,25 @@
                             </span>
                         `;
                         mediasContainer.appendChild(btn);
-                 
+                    });
+                } else {
+                    mediasContainer.innerHTML = `<p class="text-sm text-slate-400 italic text-center py-2">Tidak ada tautan media yang tersedia untuk link ini.</p>`;
+                }
+
+                // Show Result Container
+                resultContainer.classList.remove('hidden');
+
+            } catch (err) {
+                errorText.textContent = err.message || "Terjadi kesalahan pada jaringan atau server API.";
+                errorMessage.classList.remove('hidden');
+            } finally {
+                // Restore Button State
+                loadingState.classList.add('hidden');
+                submitBtn.disabled = false;
+                btnIcon.className = "fa-solid fa-download";
+                btnText.textContent = "Download";
+            }
+        });
+    </script>
+</body>
+</html>
